@@ -4,6 +4,7 @@
     Author     : ansan
 --%>
 
+<%@page import="java.util.Enumeration"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,8 +13,55 @@
         <title>Act4</title>
     </head>
     <body>
+        <%
+            Cookie cookie[]= request.getCookies(); 
+            if(cookie!=null){
+            
+            for (int i=0; i<cookie.length;i++)
+            {
+                if(cookie[i].getName().equals("base"))
+                {
+                out.print("<h1>Tu calculo anterior fue "+ cookie[i].getValue()+" de base, ");
+                }
+                if(cookie[i].getName().equals("altura"))
+                {
+                out.print( cookie[i].getValue()+" de altura, ");
+                }
+                 if(cookie[i].getName().equals("area"))
+                {
+                out.print( cookie[i].getValue()+" de area, ");
+                }
+                 if(cookie[i].getName().equals("perimetro"))
+                {
+                out.print( cookie[i].getValue()+" de perimetro.");
+                }
+            }
+            
+            }
+            
+        %>
+        <%
+            
+            
+        %>
+        
         <h1>Act4</h1>
+        
+        
         <form action="CalculoServlet" method="post">
+             
+        <%
+            HttpSession sesion= request.getSession(false);
+            Enumeration e = sesion.getAttributeNames();
+            if (e.hasMoreElements()){
+                out.print("<h1>Hola de nuevo ");
+                out.print(sesion.getAttribute("nombre"));
+                out.print("<br>");
+            }
+            else {
+                    out.print("Nombre <br> <input type=\"text\" name=\"nombre\" value=\"\"> <br>");
+                    }
+        %>
             Base: <br>
             <input type="text" name="base" value=""> <br>
             Altura: <br>

@@ -10,12 +10,21 @@ package Act4;
  */
 public class Triangulo {
     private double base, altura, perimetroCalculado, areaCalculada;
+    private String nombre; 
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
    
 
-    public Triangulo(String base, String altura) {
+    public Triangulo(String base, String altura, String nombre) {
         this.base = Double.parseDouble(base) ;
         this.altura = Double.parseDouble(altura);
+        this.nombre= nombre;
     }
     
     public void area(){
